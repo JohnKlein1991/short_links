@@ -14,6 +14,13 @@ class Handler
         try {
             $this->db = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->dbname.';charset='.$this->charset, $this->user, $this->password);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = 'CREATE TABLE IF NOT EXISTS '.$this->tableName.'
+            (
+            hash VARCHAR (45)  PRIMARY KEY,
+            link VARCHAR (250) NOT NULL
+            )';
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
         } catch (Exception $e) {
             throw new Exception('Error during connecting to DB: '.$e->getMessage());
         }
@@ -26,15 +33,7 @@ class Handler
             link VARCHAR (250) NOT NULL
             )';
         $stmt = $this->db->prepare($sql);
-        var_dump($stmt->execute());
-        /*
-        var_dump($result);
-        if($result) {
-            echo 'coole';
-        } else {
-            echo  'asdfasdf';
-        }
-        */
+        $stmt->execute();
     }
     public function getLinkByHash($hash)
     {
@@ -62,16 +61,16 @@ class Handler
                 (:hash, :link)';
                 $preparedRequest = $this->db->prepare($sql);
                 $preparedRequest->execute([
-                    ':hash' => 'test',
+                    ':hash' => $hash,
                     ':link' => $link,
                 ]);
                 echo $counter;
                 if($preparedRequest->rowCount()){
                     return SHORT_LINK_TEMPLATE . $hash;
                 }
-            }   
+            }
         } catch (Exception $e) {
-            return false;   
+            return false;
         }
     }
 
