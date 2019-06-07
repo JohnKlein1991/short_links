@@ -1,4 +1,5 @@
 <?php
+//скрипт для переадресации на нужный ресурс
 require __DIR__.'/config.php';
 require __DIR__.'/Handler.php';
 

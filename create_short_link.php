@@ -1,4 +1,5 @@
 <?php
+//скрипт для создания короткой ссылки
 require __DIR__.'/config.php';
 require __DIR__.'/Handler.php';
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,4 +25,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="link" placeholder="http://mysite.com">
         <input type="submit">
     </label>
-</form>
+</form>Ј

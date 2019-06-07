@@ -25,16 +25,6 @@ class Handler
             throw new Exception('Error during connecting to DB: '.$e->getMessage());
         }
     }
-    public function test()
-    {
-        $sql = 'CREATE TABLE IF NOT EXISTS '.DB_SL_TABLE_NAME.'
-            (
-            hash VARCHAR (45)  PRIMARY KEY,
-            link VARCHAR (250) NOT NULL
-            )';
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-    }
     public function getLinkByHash($hash)
     {
         $sql = 'SELECT link FROM short_links WHERE hash=:hash';
