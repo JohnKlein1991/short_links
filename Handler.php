@@ -38,6 +38,9 @@ class Handler
     public function addNewLinkInOurDB($link)
     {
         try {
+            //$counter - счетчик для кол-ва попыток записи ссылки в БД, тк возможны
+            //повторы значения hash, которые будут игнорироваться. В константе COUNTER_ATTEPTS
+            // задается кол-во попыток для записи
             $counter = 0;
             while (true){
                 $counter++;
@@ -54,7 +57,6 @@ class Handler
                     ':hash' => $hash,
                     ':link' => $link,
                 ]);
-                echo $counter;
                 if($preparedRequest->rowCount()){
                     return SHORT_LINK_TEMPLATE . $hash;
                 }
