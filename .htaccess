@@ -1,0 +1,5 @@
+# Включаем mod_rewrite
+RewriteEngine On
+
+RewriteRule ^create_link$ /short_link/create_short_link.php [L,R=301]
+RewriteRule ^sl/(.*)$ /short_link/short_link.php?hash=$1 [L,R=301]
