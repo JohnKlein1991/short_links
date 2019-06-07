@@ -1,9 +1,14 @@
 # short_links
 Небольшой сервис для создания коротких ссылок вида http://mytestproject.ru/sl/HASH
+<br>
 Создать ссылку можно здесь: http://mytestproject.ru/short_link
+<br>
 В репозиторий также добавлен файл .htaccess
+<br>
 Запросы на http://mytestproject.ru/short_link переадресуются на скрипт create_short_link.php
+<br>
 Запросы вида http://mytestproject.ru/sl/* переадресуются на скрипт short_link.php для следющей переадресации на нужный ресурс
+<br>
 
 Не знаю, куда там еще можно комментарии вставить, кажется, что вместе с этим описанием все достаточно понятно
 
